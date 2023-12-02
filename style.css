@@ -84,11 +84,68 @@ border-radius: 6px;
 }
 
 
+/* Common styles for all screen sizes */
+body, section {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    font-family: Arial;
+    background: url('./Ticket+GIF.gif');
+    background-size: cover;
+    background-position: center;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+/* ... (rest of your styles) */
+
+/* Styles for screens with a maximum width of 768px (typical tablet) */
+@media only screen and (max-width: 768px) {
+    nav {
+        padding: 10px 30px;
+    }
+
+    .logo-img {
+        width: 60px;
+        height: 50px;
+        margin-right: 5px;
+    }
+
+    .logo-text {
+        font-size: 18px;
+    }
+
+    nav ul li a {
+        line-height: 60px;
+        padding: 10px 20px;
+        font-size: 12px;
+    }
 
 
+@media only screen and (max-width: 480px) {
+    nav {
+        padding: 10px 15px;
+    }
 
+    .logo-img {
+        width: 40px;
+        height: 35px;
+        margin-right: 3px;
+    }
 
+    .logo-text {
+        font-size: 16px;
+    }
 
+    nav ul li a {
+        line-height: 50px;
+        padding: 8px 15px;
+        font-size: 10px;
+    }
 
 
 
