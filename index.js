@@ -49,3 +49,50 @@ function moviesHTML(movie, isFeatured) {
                 </div>
             </div>`;
 }
+const filterDropdown = document.getElementById("filter");
+
+filterDropdown.addEventListener("change", (event) => {
+    const selectedFilter = event.target.value;
+
+    if (selectedFilter !== "") {
+        filterMovies(selectedFilter);
+    }
+});
+
+function filterMovies(filterType) {
+    const moviesContainer = document.querySelector(".movies__container");
+    const movies = Array.from(moviesContainer.querySelectorAll(".movie"));
+
+    switch (filterType) {
+        case "NEW":
+            movies.sort((a, b) => {
+                const releaseDateA = a.querySelector(".year").innerText;
+                const releaseDateB = b.querySelector(".year").innerText;
+                return compareReleaseDates(releaseDateB, releaseDateA);
+            });
+            break;
+        case "OLD":
+            movies.sort((a, b) => {
+                const releaseDateA = a.querySelector(".year").innerText;
+                const releaseDateB = b.querySelector(".year").innerText;
+                return compareReleaseDates(releaseDateA, releaseDateB);
+            });
+            break;
+        // Add more cases for other filter options if needed
+
+        default:
+            break;
+    }
+
+    // Clear the container and append the sorted movies
+    moviesContainer.innerHTML = "";
+    movies.forEach((movie) => {
+        moviesContainer.appendChild(movie);
+    });
+}
+
+// Helper function to compare release dates as strings
+function compareReleaseDates(dateA, dateB) {
+    // Assuming date format is YYYY
+    return parseInt(dateB, 10) - parseInt(dateA, 10);
+}
